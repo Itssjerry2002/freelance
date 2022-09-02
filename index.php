@@ -22,29 +22,17 @@
          </ul> <!-- end #nav -->
 
       </nav> <!-- end #nav-wrap -->
-<?php 
-$u_qry = $conn->query("SELECT * FROM users where id = 1");
-foreach($u_qry->fetch_array() as $k => $v){
-  if(!is_numeric($k)){
-    $user[$k] = $v;
-  }
-}
-$c_qry = $conn->query("SELECT * FROM contacts");
-while($row = $c_qry->fetch_assoc()){
-    $contact[$row['meta_field']] = $row['meta_value'];
-}
 
-?>
       <div class="row banner">
          <div class="banner-text">
-            <h1 class="responsive-headline">I'm <?php echo isset($user) ? ucwords($user['firstname'].' '.$user['lastname']) : ""; ?></h1>
-            <h3><?php echo stripslashes($_settings->info('welcome_message')) ?></h3>
+            <h1 class="responsive-headline"><?php echo "I'm Abir Chowdhury";?></h1>
+            <h3><?php echo "I'm a Web Developer creating awesome and effective Web Applications for companies of all sizes around the globe. Let's start scrolling and learn more about me."; ?></h3>
             <hr />
             <ul class="social">
-               <li><a target="_blank" href="<?php echo $contact['facebook'] ?>"><i class="fa fa-facebook"></i></a></li>
-               <li><a target="_blank" href="<?php echo $contact['twitter'] ?>"><i class="fa fa-twitter"></i></a></li>
-               <li><a target="_blank" href="mailto:<?php echo $contact['email'] ?>"><i class="fa fa-google-plus"></i></a></li>
-               <li><a target="_blank" href="<?php echo $contact['linkin'] ?>"><i class="fa fa-linkedin"></i></a></li>
+               <li><a target="_blank" href="<?php echo "https://www.facebook.com/abir.chowdhury.2002"; ?>"><i class="fa fa-facebook"></i></a></li>
+               <li><a target="_blank" href="<?php echo "https://twitter.com/ItzzJerryyyy"; ?>"><i class="fa fa-twitter"></i></a></li>
+               <li><a target="_blank" href="mailto:<?php echo "abir2002chowdhury@gmail.com"; ?>"><i class="fa fa-google-plus"></i></a></li>
+               <li><a target="_blank" href="<?php echo "https://www.linkedin.com/in/abir-chowdhury-b4413320a/"; ?>"><i class="fa fa-linkedin"></i></a></li>
             </ul>
          </div>
       </div>
@@ -64,7 +52,7 @@ while($row = $c_qry->fetch_assoc()){
 
          <div class="three columns">
 
-            <img class="profile-pic"  src="<?php echo validate_image("avatar") ?>" alt="" />
+            <img class="profile-pic"  src="<?php echo "uploads/1619140500_avatar.png"; ?>" alt="" />
 
          </div>
 
@@ -84,16 +72,16 @@ while($row = $c_qry->fetch_assoc()){
 
                   <h2>Contact Details</h2>
                   <p class="address">
-               <span><?php echo $contact['address'] ?></span><br>
-               <span><?php echo $contact['mobile'] ?></span><br>
-                     <span><?php echo $contact['email'] ?></span>
+               <span><?php echo "Nilachal Abasan, Hatiara, New Town, Kolkata 700157"; ?></span><br>
+               <span><?php echo "6297347557"; ?></span><br>
+                     <span><?php echo "abir2002chowdhury@gmail.com"; ?></span>
              </p>
 
                </div>
 
                <div class="columns download">
                   <p>
-                     <a href="...\uploads\CV Abir Chowdhury.pdf" class="button"><i class="fa fa-download"></i>Download Resume</a>
+                     <a href="<?php echo "uploads\CV Abir Chowdhury.pdf"; ?>" class="button"><i class="fa fa-download"></i>Download Resume</a>
                   </p>
                </div>
 
@@ -119,63 +107,39 @@ while($row = $c_qry->fetch_assoc()){
          </div>
 
          <div class="nine columns main-col">
-          <?php 
-          $e_qry = $conn->query("SELECT * FROM education order by year desc, month desc");
-          while($row = $e_qry->fetch_assoc()):
-          ?>
+
             <div class="row item">
 
                <div class="twelve columns">
 
-                  <h3><?php echo $row['school'] ?></h3>
-                  <p class="info"><?php echo $row['degree'] ?> <span>&bull;</span> <em class="date"><?php echo $row['month'].' '.$row['year'] ?></em></p>
+                  <h3><?php echo "Techno Main Saltlake"; ?></h3>
+                  <p class="info"><?php echo "Diploma in Computer Science & Technology"; ?> <span>&bull;</span> <em class="date"><?php echo "August".' '."2022" ?></em></p>
 
                   <p>
-                  <?php echo stripslashes(html_entity_decode($row['description'])) ?>
+                  <?php echo "Currently appearing 2nd Year of my Diploma Degree from this college."; ?>
                   </p>
 
+                  <h3><?php echo "Dheko Rajani Kanta High School"; ?></h3>
+                  <p class="info"><?php echo "Higher Secondary(Vocational)"; ?> <span>&bull;</span> <em class="date"><?php echo "July".' '."2020" ?></em></p>
+
+                  <p>
+                  <?php echo "Completed my higher secondary degree from this school."; ?>
+                  </p>
+
+                  <h3><?php echo "Dheko Rajani Kanta High School"; ?></h3>
+                  <p class="info"><?php echo "Secondary"; ?> <span>&bull;</span> <em class="date"><?php echo "July".' '."2018" ?></em></p>
+
+                  <p>
+                  <?php echo "Completed secondary degree from this school."; ?>
+                  </p>
                </div>
 
             </div> <!-- item end -->
-          <?php endwhile; ?>
            
 
          </div> <!-- main-col end -->
 
       </div> <!-- End Education -->
-
-
-      <!-- Work
-      ----------------------------------------------- -->
-      <!--<div class="row work">
-
-         <div class="three columns header-col">
-            <h1><span>Work</span></h1>
-         </div>
-
-         <div class="nine columns main-col">
-          <?php 
-          $w_qry = $conn->query("SELECT * FROM work ");
-          while($row = $w_qry->fetch_assoc()):
-          ?>
-            <div class="row item">
-
-               <div class="twelve columns">
-
-                  <h3><?php echo $row['company'] ?></h3>
-                  <p class="info"><?php echo $row['position'] ?> <span>&bull;</span> <em class="date"><?php echo str_replace("_"," ",$row['started']) ?> - <?php echo str_replace("_"," ",$row['ended']) ?></em></p>
-
-                  
-                  <p><?php echo stripslashes(html_entity_decode($row['description'])) ?></p>
-
-               </div>
-
-            </div> 
-          <?php endwhile; ?>
-         </div> 
-
-      </div> 
-
 
       <!-- Skills
       ----------------------------------------------- -->
@@ -221,18 +185,17 @@ while($row = $c_qry->fetch_assoc()){
 
             <!-- portfolio-wrapper -->
             <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">
-               <?php 
-                  $p_qry = $conn->query("SELECT * FROM project ");
-                  while($row = $p_qry->fetch_assoc()):
-                  ?>
+
                  <div class="columns portfolio-item">
                     <div class="item-wrap">
+                     
 
-                       <a href="#modal-<?php echo $row['id'] ?>" title="">
-                          <img alt="" src="<?php echo validate_image($row['banner']) ?>">
+                       <a href="#modal-1<?php echo "uploads/EH Certificate.jpg"; ?>" title="">
+                          <img alt="" src="<?php echo "uploads/EH Certificate.jpg"; ?>">
                           <div class="overlay">
                              <div class="portfolio-item-meta">
-                            <h5 class="truncate-1"><?php echo $row['name'] ?></h5>
+                            <h5 class="truncate-1"><?php echo "Ethical Hacking Workshop Certificate"; ?></h5>
+
                                 <!-- <p>Illustrration</p> -->
                          </div>
                           </div>
@@ -241,36 +204,67 @@ while($row = $c_qry->fetch_assoc()){
                        </a>
                     </div>
                 </div> <!-- item end -->
-              <?php endwhile; ?>
+
+                <div class="columns portfolio-item">
+                    <div class="item-wrap">
+
+                       <a href="#modal-<?php echo "uploads/google certificate.jpg"; ?>" title="">
+                          <img alt="" src="<?php echo "uploads/google Certificate.jpg"; ?>">
+                          <div class="overlay">
+                             <div class="portfolio-item-meta">
+                            <h5 class="truncate-1"><?php echo "Google Digital Unlocked Certificate"; ?></h5>
+                                <!-- <p>Illustrration</p> -->
+                         </div>
+                          </div>
+
+                          <div class="link-icon"><i class="icon-plus"></i></div>
+                       </a>
+                    </div>
+                </div> <!-- item end -->
+
+                <div class="columns portfolio-item">
+                    <div class="item-wrap">
+
+                       <a href="#modal-<?php echo "uploads/Photography Certificate.jpg"; ?>" title="">
+                          <img alt="" src="<?php echo "uploads/Photography Certificate.jpg"; ?>">
+                          <div class="overlay">
+                             <div class="portfolio-item-meta">
+                            <h5 class="truncate-1"><?php echo "Certificate Of Perticipation On Photopedia"; ?></h5>
+                                <!-- <p>Illustrration</p> -->
+                         </div>
+                          </div>
+
+                          <div class="link-icon"><i class="icon-plus"></i></div>
+                       </a>
+                    </div>
+                </div> <!-- item end -->
+
+                <div class="columns portfolio-item">
+                    <div class="item-wrap">
+
+                       <a href="#modal-<?php echo "uploads/Sanjivani Cancer prevention certificate.jpg"; ?>" title="">
+                          <img alt="" src="<?php echo "uploads/Sanjivani Cancer prevention certificate.jpg"; ?>">
+                          <div class="overlay">
+                             <div class="portfolio-item-meta">
+                            <h5 class="truncate-1"><?php echo "Certificate Of Perticipation On Cancer Awarness"; ?></h5>
+                                <!-- <p>Illustrration</p> -->
+                         </div>
+                          </div>
+
+                          <div class="link-icon"><i class="icon-plus"></i></div>
+                       </a>
+                    </div>
+                </div> <!-- item end -->
 
             </div> <!-- portfolio-wrapper end -->
 
          </div> <!-- twelve columns end -->
 
-
-          <?php 
-              $p_qry = $conn->query("SELECT * FROM project ");
-              while($row = $p_qry->fetch_assoc()):
-            ?>
-
          <!-- Modal Popup
         --------------------------------------------------------------- -->
 
-         <div id="modal-<?php echo $row['id'] ?>" class="popup-modal mfp-hide">
+ 
 
-          <img class="scale-with-grid" src="<?php echo validate_image($row['banner']) ?>" alt="" />
-
-          <div class="description-box">
-            <h4><?php echo $row['name'] ?></h4>
-            <p><?php echo stripslashes(html_entity_decode($row['description'])) ?></p>
-               <span class="categories"><i class="fa fa-tag"></i><?php echo $row['client'] ?></span>
-          </div>
-
-
-
-        </div><!-- modal-01 End -->
-
-      <?php endwhile; ?>
 
 
       </div> <!-- row End -->
@@ -302,19 +296,33 @@ while($row = $c_qry->fetch_assoc()){
 
                      <li>
                         <blockquote>
-                           <p>Your work is going to fill a large part of your life, and the only way to be truly satisfied is
-                           to do what you believe is great work. And the only way to do great work is to love what you do.
-                           If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know.
+                           <p>Jerry is the greatest ever person.
                            </p>
-                           <cite>Steve Jobs</cite>
+                           <cite>Ipsitneel Chaudhury</cite>
                         </blockquote>
                      </li> <!-- slide ends -->
 
                      <li>
                         <blockquote>
-                           <p>Haar Kar Jeetney Walon Ko Baajigar Kehte Hai
+                           <p>Haar Kar Jeetney Walon Ko Baajigar Kehte Hai. And Jerry ek Baazigar hai.
                            </p>
-                           <cite>SRK</cite>
+                           <cite>Abir Das</cite>
+                        </blockquote>
+                     </li> <!-- slide ends -->
+
+                     <li>
+                        <blockquote>
+                           <p>Jerry is a Legend, There is no one like him.
+                           </p>
+                           <cite>Sourin Majumdar</cite>
+                        </blockquote>
+                     </li> <!-- slide ends -->
+
+                     <li>
+                        <blockquote>
+                           <p>Jerry is a Very good boy
+                           </p>
+                           <cite>Soham Chakraborti</cite>
                         </blockquote>
                      </li> <!-- slide ends -->
 
